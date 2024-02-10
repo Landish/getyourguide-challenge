@@ -1,6 +1,11 @@
 version: '3'
 
-services: 
+services:
+  nest-backend:
+    build: 
+      context: nest-backend 
+    ports: 
+      - '3000:3000' 
   vue-frontend:
     build: 
       context: vue-frontend
