@@ -3,27 +3,46 @@ export default {
   name: 'activities-component',
   data() {
     return {
+      query: '',
       activities: []
     }
   },
   async mounted() {
-    console.log('activis mounted')
-    const response = await fetch('http://localhost:3000/activities', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
+    const response = await fetch('http://localhost:3000/activities')
     this.activities = await response.json()
+  },
+
+  computed: {
+    filteredActivities() {
+      return this.activities.filter((activity: any) => {
+        return activity.title.toLowerCase().includes(this.query.toLowerCase())
+      })
+    }
   }
 }
 </script>
 
 <template>
-  <div class="activities__container">
-    {{ activities }}
+  <!-- Filter form -->
+  <div>
+    <h1>Activities</h1>
+    <input type="text" v-model="query" placeholder="Search activities" />
+    {{ query }}
   </div>
+  <!-- Activities list -->
+  <div class="activities__container">
+    <div v-for="activity in filteredActivities" :key="activity.id" class="activities">
+      <div class="activities__activity">
+        <h3>{{ activity.title }}</h3>
+        <p>{{ activity.price }}{{ activity.currency }}</p>
+        <p>{{ activity.specialOffer ? 'special' : 'not special' }}</p>
+        <p>
+          {{ activity.supplier.name }} {{ activity.supplier.country }} {{ activity.supplier.city }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <pre>{{ activities }}</pre>
 </template>
 
 <style lang="scss">
