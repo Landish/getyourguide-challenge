@@ -1,88 +1,70 @@
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue'
+import type { Activity } from '../types'
+import ActivitiesList from './ActivitiesList.vue'
+
+export default defineComponent({
   name: 'activities-component',
   data() {
     return {
       query: '',
-      activities: []
+      activities: [] as Activity[]
+    }
+  },
+  watch: {
+    query: {
+      handler() {
+        this.fetchActivities()
+      }
+    }
+  },
+  computed: {
+    url() {
+      return `http://localhost:3000/activities?withSupplier=true&title=${this.query}`
+    }
+  },
+  methods: {
+    async fetchActivities() {
+      const response = await fetch(this.url)
+      this.activities = await response.json()
     }
   },
   async mounted() {
-    const response = await fetch('http://localhost:3000/activities')
-    this.activities = await response.json()
+    this.fetchActivities()
   },
-
-  computed: {
-    filteredActivities() {
-      return this.activities.filter((activity: any) => {
-        return activity.title.toLowerCase().includes(this.query.toLowerCase())
-      })
-    }
-  }
-}
+  components: { ActivitiesList }
+})
 </script>
 
 <template>
   <!-- Filter form -->
   <div>
     <h1>Activities</h1>
-    <input type="text" v-model="query" placeholder="Search activities" />
-    {{ query }}
+    <input v-model="query" type="search" placeholder="Search activities" />
   </div>
   <!-- Activities list -->
-  <div class="activities__container">
-    <div v-for="activity in filteredActivities" :key="activity.id" class="activities">
-      <div class="activities__activity">
-        <h3>{{ activity.title }}</h3>
-        <p>{{ activity.price }}{{ activity.currency }}</p>
-        <p>{{ activity.specialOffer ? 'special' : 'not special' }}</p>
-        <p>
-          {{ activity.supplier.name }} {{ activity.supplier.country }} {{ activity.supplier.city }}
-        </p>
-      </div>
-    </div>
-  </div>
-  <pre>{{ activities }}</pre>
+  <ActivitiesList :activities="activities" />
 </template>
 
 <style lang="scss">
-.activities {
-  &__container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 0 20px;
-  }
-  &__activity {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      border: 1px solid #000;
-      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    }
-  }
+h1 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
+input {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 
-@media screen and (min-width: 768px) {
-  .activities {
-    &__container {
-      width: 100%;
-      padding: 0;
-      row-gap: 20px;
-    }
+  &:focus {
+    border: 1px solid #000;
+    outline: none;
   }
 }
 </style>
