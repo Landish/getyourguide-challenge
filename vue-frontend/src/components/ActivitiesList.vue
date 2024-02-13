@@ -41,12 +41,13 @@ export default defineComponent({
     margin: 0 auto;
   }
   &__activity {
-    border: 1px solid black;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     padding: 20px;
 
     h3 {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
     }
   }
 }

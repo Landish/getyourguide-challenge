@@ -2,6 +2,7 @@
 import { defineComponent } from 'vue'
 import type { Activity } from '../types'
 import ActivitiesList from './ActivitiesList.vue'
+import { getActivities } from './activities-service'
 
 export default defineComponent({
   name: 'activities-component',
@@ -18,15 +19,12 @@ export default defineComponent({
       }
     }
   },
-  computed: {
-    url() {
-      return `http://localhost:3000/activities?withSupplier=true&title=${this.query}`
-    }
-  },
   methods: {
     async fetchActivities() {
-      const response = await fetch(this.url)
-      this.activities = await response.json()
+      this.activities = await getActivities({
+        withSupplier: true,
+        title: this.query
+      })
     }
   },
   async mounted() {
@@ -37,19 +35,18 @@ export default defineComponent({
 </script>
 
 <template>
-  <!-- Filter form -->
+  <!-- Activities Filter -->
   <div>
     <h1>Activities</h1>
     <input v-model="query" type="search" placeholder="Search activities" />
   </div>
-  <!-- Activities list -->
+  <!-- Activities ist -->
   <ActivitiesList :activities="activities" />
 </template>
 
 <style lang="scss">
 h1 {
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
 }
 input {
   display: block;
