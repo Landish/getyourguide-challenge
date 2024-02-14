@@ -1,8 +1,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { Activity } from '@/types/types'
-import ActivitiesList from '@/components/ActivitiesList.vue'
-import { getActivities } from '@/components/activities-service'
+import ActivitiesList from '@/components/activities/ActivitiesList.vue'
+import ActivitiesEmpty from '@/components/activities/ActivitiesEmpty.vue'
+import { getActivities } from '@/components/activities/services/activities-service'
 
 export default defineComponent({
   name: 'activities-component',
@@ -30,7 +31,7 @@ export default defineComponent({
   async mounted() {
     this.fetchActivities()
   },
-  components: { ActivitiesList }
+  components: { ActivitiesList, ActivitiesEmpty }
 })
 </script>
 
@@ -40,28 +41,6 @@ export default defineComponent({
     <h1>Activities</h1>
     <input v-model="query" type="search" placeholder="Search activities" />
   </div>
-  <!-- Activities ist -->
-  <ActivitiesList :activities="activities" />
+  <ActivitiesList :activities="activities" v-if="activities?.length > 0" />
+  <ActivitiesEmpty v-else />
 </template>
-
-<style lang="scss">
-h1 {
-  text-align: center;
-}
-input {
-  display: block;
-  margin: 20px auto;
-  padding: 10px;
-  width: 100%;
-  max-width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-
-  &:focus {
-    border: 1px solid #000;
-    outline: none;
-  }
-}
-</style>

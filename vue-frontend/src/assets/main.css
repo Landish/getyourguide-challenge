@@ -7,3 +7,24 @@ body {
   padding: 0;
   color: #333;
 }
+
+h1 {
+  text-align: center;
+}
+
+input {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+
+  &:focus {
+    border: 1px solid #000;
+    outline: none;
+  }
+}

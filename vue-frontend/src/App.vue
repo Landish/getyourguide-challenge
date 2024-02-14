@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Activities from '@/components/Activities.vue'
+import Activities from '@/components/activities/Activities.vue'
 </script>
 
 <template>
