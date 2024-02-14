@@ -1,4 +1,4 @@
-import type { Activity } from '@/types'
+import type { Activity } from '@/types/types'
 
 export async function getActivities({
   title = '',
@@ -12,6 +12,8 @@ export async function getActivities({
   if (withSupplier) url.searchParams.append('withSupplier', withSupplier.toString())
 
   const request = await fetch(url.toString())
-  const activities = await request.json()
+  if (!request.ok) throw new Error('Failed to fetch activities')
+
+  const activities = (await request.json()) as Activity[]
   return activities
 }

@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import type { Activity } from '../types'
-import ActivitiesList from './ActivitiesList.vue'
-import { getActivities } from './activities-service'
+import type { Activity } from '@/types/types'
+import ActivitiesList from '@/components/ActivitiesList.vue'
+import { getActivities } from '@/components/activities-service'
 
 export default defineComponent({
   name: 'activities-component',
