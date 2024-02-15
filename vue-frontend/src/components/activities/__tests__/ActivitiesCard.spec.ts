@@ -2,36 +2,9 @@ import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
 import ActivitiesCard from '../ActivitiesCard.vue'
-import type { Activity } from '@/types/types'
-
-// Utility type to make all properties of a nested object optional
-type DeepPartial<T> = T extends object
-  ? {
-      [P in keyof T]?: DeepPartial<T[P]>
-    }
-  : T
+import { mockActivity } from '@/utils/test-utils'
 
 describe('ActivitiesCard', () => {
-  const mockActivity = (overrides?: DeepPartial<Activity>) => {
-    return {
-      id: 1,
-      title: 'Activity Title',
-      price: 50,
-      currency: 'EUR',
-      rating: 4.2,
-      specialOffer: true,
-      supplier: {
-        id: 1,
-        name: 'Supplier name',
-        address: 'Supplier address',
-        zip: '12345',
-        city: 'Berlin',
-        country: 'Germany'
-      },
-      ...overrides
-    }
-  }
-
   it('renders activity card', () => {
     const wrapper = mount(ActivitiesCard, {
       props: {
