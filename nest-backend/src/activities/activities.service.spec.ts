@@ -5,31 +5,6 @@ import { Activity } from './entities/activity.entity';
 import { Supplier } from '../suppliers/entities/supplier.entity';
 import { Like } from 'typeorm';
 
-export function createActivityStub(overrides?: Partial<Activity>): Activity {
-  return {
-    id: Date.now(),
-    title: 'First Activity',
-    price: 100,
-    currency: 'USD',
-    rating: 4.5,
-    specialOffer: false,
-    supplierId: 1,
-    ...overrides,
-  };
-}
-
-export function createSupplierStub(overrides?: Partial<Supplier>): Supplier {
-  return {
-    id: Date.now(),
-    name: 'Supplier Name',
-    address: 'Berliner Str. 12',
-    country: 'Germany',
-    city: 'Berlin',
-    zip: '12345',
-    ...overrides,
-  };
-}
-
 describe('ActivitiesService', () => {
   let service: ActivitiesService;
 
@@ -121,3 +96,28 @@ describe('ActivitiesService', () => {
     expect(activities[1].supplier).not.toBe(supplier);
   });
 });
+
+export function createActivityStub(overrides?: Partial<Activity>): Activity {
+  return {
+    id: Date.now(),
+    title: 'First Activity',
+    price: 100,
+    currency: 'USD',
+    rating: 4.5,
+    specialOffer: false,
+    supplierId: 1,
+    ...overrides,
+  };
+}
+
+export function createSupplierStub(overrides?: Partial<Supplier>): Supplier {
+  return {
+    id: Date.now(),
+    name: 'Supplier Name',
+    address: 'Berliner Str. 12',
+    country: 'Germany',
+    city: 'Berlin',
+    zip: '12345',
+    ...overrides,
+  };
+}
