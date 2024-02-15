@@ -11,18 +11,6 @@ export class ActivitiesService {
     private activitiesRepository: Repository<Activity>,
   ) {}
 
-  async create() {
-    const activity = this.activitiesRepository.create({
-      title: 'Activity Title',
-      price: 100,
-      currency: 'USD',
-      rating: 4.5,
-      specialOffer: false,
-      supplierId: 1,
-    });
-    return this.activitiesRepository.save(activity);
-  }
-
   findActivities(findActivitiesDto?: FindActivitiesDto): Promise<Activity[]> {
     const filterOptions: FindManyOptions<Activity> = {};
 
