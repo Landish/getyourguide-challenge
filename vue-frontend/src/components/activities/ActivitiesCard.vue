@@ -14,7 +14,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="activities__card" data-testid="activity-card">
+  <div class="activities__card" data-testid="activities-card">
     <h3>{{ activity.title }}</h3>
     <p>Price: {{ activity.price }}{{ activity.currency }}</p>
     <p>Rating: {{ activity.rating }}</p>

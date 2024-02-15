@@ -11,7 +11,7 @@ describe('ActivitiesCard', () => {
         activity: mockActivity()
       }
     })
-    expect(wrapper.get('[data-testid=activity-card]')).toBeDefined()
+    expect(wrapper.get('[data-testid=activities-card]')).toBeDefined()
   })
   it('renders activity title', () => {
     const wrapper = mount(ActivitiesCard, {
