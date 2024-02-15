@@ -10,7 +10,7 @@ export interface Activity {
 }
 
 export interface Supplier {
-  id: number
+  id?: number
   name: string
   address: string
   zip: string

@@ -7,7 +7,7 @@ type DeepPartial<T> = T extends object
     }
   : T
 
-export const mockActivity = (overrides?: DeepPartial<Activity>) => {
+export const mockActivity = (overrides?: DeepPartial<Activity>): Activity => {
   return {
     id: 1,
     title: 'Activity Title',
@@ -15,11 +15,13 @@ export const mockActivity = (overrides?: DeepPartial<Activity>) => {
     currency: 'EUR',
     rating: 4.2,
     specialOffer: true,
+    supplierId: 1,
+    supplier: mockSupplier(),
     ...overrides
-  }
+  } as Activity
 }
 
-export const mockSupplier = (overrides?: DeepPartial<Supplier>) => {
+export const mockSupplier = (overrides?: DeepPartial<Supplier>): Supplier => {
   return {
     id: 1,
     name: 'Supplier name',
