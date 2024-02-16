@@ -34,7 +34,7 @@ Instead of java spring boot we are using NestJS, which is a Node.js framework.
 - Server: Add cache layer between API and DB calls. 
 - ...
 
-#### Tests
+### Tests
 
 Both, client and server comes with unit tests. To run them, install necessary dependencies and run `test` command.
 
