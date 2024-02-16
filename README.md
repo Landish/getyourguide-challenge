@@ -1,4 +1,4 @@
-### Getting Started
+## Getting Started
 
 To run the full project locally run the following command:
 
@@ -18,12 +18,12 @@ nest-backend/src/
 vue-frontend/src/
 ```
 
-### Assumptions & Technical Decisions
+## Assumptions & Technical Decisions
 
 My assumptions where that this task is a part of a microservice architecture. 
 Instead of java spring boot we are using NestJS, which is a Node.js framework. 
 
-### Areas of Improvement
+## Areas of Improvement
 
 - Client: Update URL while searching, so the search results page can be shareable. 
 - Client: Use delay of 250ms on key up of activities filter, so that we are not hitting API all the time.
@@ -34,7 +34,7 @@ Instead of java spring boot we are using NestJS, which is a Node.js framework.
 - Server: Add cache layer between API and DB calls. 
 - ...
 
-### Tests
+## Tests
 
 Both, client and server comes with unit tests. To run them, install necessary dependencies and run `test` command.
 
