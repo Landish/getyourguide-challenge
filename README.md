@@ -6,14 +6,22 @@ To run the full project locally run the following command:
 docker compose up --build
 ```
 
+It will provide us with these links, which we can open in browser:
+
 Client UI: http://localhost:4173/
 REST API: http://localhost:3000/activities
+
+Important files are located in following directories:
+
+```
+nest-backend/src/
+vue-frontend/src/
+```
 
 ### Assumptions & Technical Decisions
 
 My assumptions where that this task is a part of a microservice architecture. 
-Instead of java spring boot we are using NestJS, which is a
-
+Instead of java spring boot we are using NestJS, which is a Node.js framework. 
 
 ### Areas of Improvement
 
@@ -29,15 +37,11 @@ Instead of java spring boot we are using NestJS, which is a
 Both, client and server comes with unit tests. To run them, install necessary dependencies and run `test` command.
 
 ```
-# Backend
+# Backend Tests
 cd nest-backend
-npm install
+npm install && npm run test
 
-npm run test
-
-# Frontend
+# Frontend Tests
 cd vue-frontend
-npm install 
-
-npm run test
+npm install && npm run test
 ```
