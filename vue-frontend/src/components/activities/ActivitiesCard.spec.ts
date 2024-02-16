@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import ActivitiesCard from '../ActivitiesCard.vue'
 import { mockActivity } from '@/utils/test-utils'
+import ActivitiesCard from './ActivitiesCard.vue'
 
 describe('ActivitiesCard', () => {
   it('renders activity card', () => {

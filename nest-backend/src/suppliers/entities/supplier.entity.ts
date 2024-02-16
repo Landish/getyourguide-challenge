@@ -1,26 +1,34 @@
-import { Activity } from '../../activities/entities/activity.entity';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-
-@Entity('suppliers')
+/**
+ * Represents a supplier entity.
+ */
 export class Supplier {
-  @PrimaryGeneratedColumn()
+  /**
+   * The unique identifier of the supplier.
+   */
   id: number;
 
-  @Column()
+  /**
+   * The name of the supplier.
+   */
   name: string;
 
-  @Column()
+  /**
+   * The address of the supplier.
+   */
   address: string;
 
-  @Column()
+  /**
+   * The ZIP code of the supplier's location.
+   */
   zip: string;
 
-  @Column()
+  /**
+   * The city where the supplier is located.
+   */
   city: string;
 
-  @Column()
+  /**
+   * The country where the supplier is located.
+   */
   country: string;
-
-  @OneToMany(() => Activity, (activity) => activity.supplier)
-  activities?: Activity[];
 }

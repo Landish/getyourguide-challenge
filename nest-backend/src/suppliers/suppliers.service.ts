@@ -1,21 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { CreateSupplierDto } from './dto/create-supplier.dto';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Supplier } from './entities/supplier.entity';
-import { Repository } from 'typeorm';
+import SUPPLIERS_DATA from './data/suppliers.data';
 
 @Injectable()
 export class SuppliersService {
-  constructor(
-    @InjectRepository(Supplier)
-    private suppliersRepository: Repository<Supplier>,
-  ) {}
-  create(createSupplierDto: CreateSupplierDto) {
-    const supplier = this.suppliersRepository.create(createSupplierDto);
-    return this.suppliersRepository.save(supplier);
+  findAll(): Supplier[] {
+    // Simulates a database query for getting all suppliers
+    return SUPPLIERS_DATA;
   }
 
-  findAll(): Promise<Supplier[]> {
-    return this.suppliersRepository.find();
+  // Converts the array of suppliers to a map and returns it
+  getAllAsMap() {
+    return this.findAll().reduce((acc, supplier) => {
+      acc[supplier.id] = supplier;
+      return acc;
+    }, {});
   }
 }

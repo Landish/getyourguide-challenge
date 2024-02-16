@@ -1,35 +1,37 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Activity } from './entities/activity.entity';
-import { FindManyOptions, Like, Repository } from 'typeorm';
 import { FindActivitiesDto } from './dto/find-activities.dto';
-
+import { SuppliersService } from '../suppliers/suppliers.service';
+import ACTIVITIES_DATA from './data/activities.data';
 @Injectable()
 export class ActivitiesService {
-  constructor(
-    @InjectRepository(Activity)
-    private activitiesRepository: Repository<Activity>,
-  ) {}
+  constructor(private readonly suppliersService: SuppliersService) {}
 
-  findActivities(findActivitiesDto?: FindActivitiesDto): Promise<Activity[]> {
-    const filterOptions: FindManyOptions<Activity> = {};
+  findActivities(findActivitiesDto?: FindActivitiesDto): Activity[] {
+    const suppliersMap = this.suppliersService.getAllAsMap();
 
-    // Apply title filter if requested
+    // Simulates a database query for getting all suppliers
+    let filteredActivities = ACTIVITIES_DATA;
+
+    // Simulates a WHERE clause on activities table
     if (findActivitiesDto?.title) {
-      filterOptions.where = filterOptions.where || {};
-      filterOptions.where['title'] = Like(`%${findActivitiesDto.title}%`);
+      filteredActivities = filteredActivities.filter((activity) =>
+        activity.title
+          .toLowerCase()
+          .includes(findActivitiesDto.title.toLowerCase()),
+      );
     }
 
-    // Load supplier relations if requested
+    // Simulates a join between activities and suppliers tables
     if (findActivitiesDto?.withSupplier) {
-      filterOptions.relations = filterOptions.relations || {};
-      filterOptions.relations['supplier'] = true;
+      filteredActivities = filteredActivities.map((activity) => {
+        return {
+          ...activity,
+          supplier: suppliersMap[activity.supplierId],
+        };
+      });
     }
 
-    return this.activitiesRepository.find(filterOptions);
-  }
-
-  clean() {
-    return this.activitiesRepository.clear();
+    return filteredActivities;
   }
 }

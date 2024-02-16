@@ -1,46 +1,35 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { Activity } from '@/types/types'
+import { getActivities } from '@/services/activities-service'
+import ActivitiesFilter from '@/components/activities/ActivitiesFilter.vue'
 import ActivitiesList from '@/components/activities/ActivitiesList.vue'
 import ActivitiesEmpty from '@/components/activities/ActivitiesEmpty.vue'
-import { getActivities } from '@/services/activities-service'
 
 export default defineComponent({
   name: 'activities-component',
   data() {
     return {
-      query: '',
       activities: [] as Activity[]
     }
   },
-  watch: {
-    query: {
-      handler() {
-        this.fetchActivities()
-      }
-    }
-  },
   methods: {
-    async fetchActivities() {
+    async fetchActivities(title?: string) {
       this.activities = await getActivities({
         withSupplier: true,
-        title: this.query
+        title
       })
     }
   },
   async mounted() {
-    this.fetchActivities()
+    this.fetchActivities('')
   },
-  components: { ActivitiesList, ActivitiesEmpty }
+  components: { ActivitiesFilter, ActivitiesList, ActivitiesEmpty }
 })
 </script>
 
 <template>
-  <!-- Activities Filter -->
-  <div>
-    <h1>Activities</h1>
-    <input v-model="query" type="search" placeholder="Search activities" />
-  </div>
+  <ActivitiesFilter @search="(query) => fetchActivities(query)" />
   <ActivitiesList :activities="activities" v-if="activities?.length > 0" />
   <ActivitiesEmpty v-else />
 </template>

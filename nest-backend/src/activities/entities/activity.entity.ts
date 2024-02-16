@@ -1,29 +1,39 @@
-import { Supplier } from '../../suppliers/entities/supplier.entity';
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-
-@Entity('activities')
+/**
+ * Represents an activity.
+ */
 export class Activity {
-  @PrimaryGeneratedColumn()
+  /**
+   * The ID of the activity.
+   */
   id: number;
 
-  @Column()
+  /**
+   * The title of the activity.
+   */
   title: string;
 
-  @Column()
+  /**
+   * The price of the activity.
+   */
   price: number;
 
-  @Column()
+  /**
+   * The currency of the price.
+   */
   currency: string;
 
-  @Column({ type: 'double' })
-  rating: number;
+  /**
+   * The rating of the activity.
+   */
+  rating: number; // double
 
-  @Column()
+  /**
+   * Indicates if the activity has a special offer.
+   */
   specialOffer: boolean;
 
-  @Column()
+  /**
+   * The ID of the supplier of the activity.
+   */
   supplierId: number;
-
-  @ManyToOne(() => Supplier, (supplier) => supplier.activities)
-  supplier?: Supplier;
 }
