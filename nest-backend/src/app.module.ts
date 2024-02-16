@@ -10,7 +10,7 @@ import { Supplier } from './suppliers/entities/supplier.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: 'db/sql',
+      database: 'db/database.sqlite',
       synchronize: true,
       entities: [Activity, Supplier],
     }),
