@@ -8,8 +8,8 @@ docker compose up --build
 
 It will provide us with these links, which we can open in browser:
 
-Client UI: http://localhost:4173/
-REST API: http://localhost:3000/activities
+- Client UI: http://localhost:4173/
+- REST API: http://localhost:3000/activities
 
 Important files are located in following directories:
 
@@ -28,9 +28,11 @@ Instead of java spring boot we are using NestJS, which is a Node.js framework.
 - Client: Styles should match branding
 - Client: Update URL while searching, so the search results page can be shareable. 
 - Client: Use delay of 250ms on key up of activities filter
+- ...
 
 - Server: Integrate with database
 - Server: Add cache layer between API and DB calls. 
+- ...
 
 #### Tests
 
