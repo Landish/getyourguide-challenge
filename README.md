@@ -25,9 +25,9 @@ Instead of java spring boot we are using NestJS, which is a Node.js framework.
 
 ### Areas of Improvement
 
-- Client: Styles should match branding
 - Client: Update URL while searching, so the search results page can be shareable. 
-- Client: Use delay of 250ms on key up of activities filter
+- Client: Use delay of 250ms on key up of activities filter, so that we are not hitting API all the time.
+- Client: Add preloader screen, before activities list is loaded.
 - ...
 
 - Server: Integrate with database
