@@ -21,8 +21,6 @@ export default defineComponent({
       })
     },
     handleSearch(query: string | Event) {
-      // If the query is an Event, it means that user has pressed Enter.
-      // In this case, we should prevent the default behavior of form.
       if (query instanceof Event) {
         query.preventDefault()
         return
