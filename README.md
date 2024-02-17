@@ -22,16 +22,20 @@ vue-frontend/src/
 
 ## Assumptions & Technical Decisions
 
+In real-world scenario filtering, sorting and similar operations should be done on the Database/Server Layer. 
+
 Filtering logic is implemented on backend in `nest-backend/src/activities/activities.service.ts` file. 
 Ideally this service should communicate with Database and query results with their relationships.
 But in our case we are simply using hardcoded list of activities from `activities.json` file.
 
-Backend exposes following API endpoints:
+Backend exposes following API endpoints to Client:
 
-- `/activities`  -> returns list of activities 
+- `/activities`  -> returns list of activities.
 - `/activities?withSupplier=true`  -> returns list of activities with supplier relationship included. 
 - `/activities?title={SEARCH_KEYWORD}`  -> returns list of activities filtered by title. 
 - `/suppliers`  -> returns list of suppliers. 
+
+Client only uses `/activities?withSupplier=true&title={SEARCH_KEYWORD}` API endpoint for filtering and returning list of activities with their correspondent supplier. 
 
 ## Areas of Improvement
 
