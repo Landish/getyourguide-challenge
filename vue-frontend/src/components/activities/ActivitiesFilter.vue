@@ -10,6 +10,7 @@ export default defineComponent({
   },
   methods: {
     search() {
+      // Use debounce to avoid making too many requests
       this.$emit('search', this.query)
     }
   }
