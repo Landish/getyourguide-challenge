@@ -20,6 +20,20 @@ nest-backend/src/
 vue-frontend/src/
 ```
 
+## Tests
+
+Both, client and server has tests. To run them, install necessary dependencies and run `test` command.
+
+```
+# Backend Tests
+cd nest-backend
+npm install && npm run test
+
+# Frontend Tests
+cd vue-frontend
+npm install && npm run test
+```
+
 ## Assumptions & Technical Decisions
 
 In real-world scenario filtering, sorting and similar operations should be done on the Database/Server Layer. 
@@ -51,17 +65,3 @@ There are several things that can be done to improve these applications. However
 - Server: Use paginated results for large list of activities. 
 - Add missing E2E Tests for both applications
 - ...
-
-## Tests
-
-Both, client and server has tests. To run them, install necessary dependencies and run `test` command.
-
-```
-# Backend Tests
-cd nest-backend
-npm install && npm run test
-
-# Frontend Tests
-cd vue-frontend
-npm install && npm run test
-```
