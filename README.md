@@ -31,6 +31,7 @@ Backend exposes following API endpoints:
 - `/activities`  -> returns list of activities 
 - `/activities?withSupplier=true`  -> returns list of activities with supplier relationship included. 
 - `/activities?title={SEARCH_KEYWORD}`  -> returns list of activities filtered by title. 
+- `/suppliers`  -> returns list of suppliers. 
 
 ## Areas of Improvement
 
