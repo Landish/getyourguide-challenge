@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { Activity } from '@/types/types'
-import { getActivities } from '@/services/activities-service'
+import { findActivities } from '@/services/activities-service'
 import ActivitiesFilter from '@/components/activities/ActivitiesFilter.vue'
 import ActivitiesList from '@/components/activities/ActivitiesList.vue'
 import ActivitiesEmpty from '@/components/activities/ActivitiesEmpty.vue'
@@ -15,7 +15,7 @@ export default defineComponent({
   },
   methods: {
     async fetchActivities(title?: string) {
-      this.activities = await getActivities({
+      this.activities = await findActivities({
         withSupplier: true,
         title
       })
