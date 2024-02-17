@@ -8,7 +8,7 @@ To run the full project locally use the following command:
 docker compose up --build
 ```
 
-It will provide us with following links which we can open in browser:
+It will provide us with following links:
 
 - Client UI: http://localhost:4173/
 - REST API: http://localhost:3000/activities
