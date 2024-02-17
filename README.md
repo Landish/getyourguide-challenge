@@ -36,20 +36,24 @@ npm install && npm run test
 
 ## Assumptions & Technical Decisions
 
-In real-world scenario filtering, sorting and similar operations should be done on the Database/Server Layer. 
+In approaching this challenge, I initially assumed it was a component of the activity services within the microservices architecture. 
+However, as I wasn't familiar with Java Spring Boot, I decided to use NestJS for the backend aspect of this challenge. 
+NestJS is recognized for its scalable and modular architecture, making it advantageous for both small and enterprise applications.
+
+In real-world 3-tier applications filtering, sorting and similar operations should be done on the Database/Server Layer. 
 Filtering logic is implemented on backend in `nest-backend/src/activities/activities.service.ts` file. 
 
 Ideally this service should communicate with Database and query results with their relationships.
 But in our case we are simply using hardcoded list of activities from `activities.json` file.
 
-Backend exposes following API endpoints to Client:
+Backend exposes following API endpoints:
 
 - `/activities`  -> returns list of activities.
 - `/activities?withSupplier=true`  -> returns list of activities with supplier relationship included. 
 - `/activities?title={SEARCH_KEYWORD}`  -> returns list of activities filtered by title. 
 - `/suppliers`  -> returns list of suppliers. 
 
-Client only uses `/activities?withSupplier=true&title={SEARCH_KEYWORD}` API endpoint for filtering and returning list of activities with their correspondent supplier. 
+However, for this case Client only uses `/activities?withSupplier=true&title={SEARCH_KEYWORD}` API endpoint for filtering and returning list of activities with their supplier.
 
 ## Areas of Improvement
 
