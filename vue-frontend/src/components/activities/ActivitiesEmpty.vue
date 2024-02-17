@@ -3,7 +3,7 @@
     <p>No activities found</p>
   </div>
 </template>
-<style lang="scss">
+<style scoped lang="scss">
 .activities {
   &__empty {
     text-align: center;

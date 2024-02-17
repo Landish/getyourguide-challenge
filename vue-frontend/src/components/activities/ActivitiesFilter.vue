@@ -23,7 +23,7 @@ export default defineComponent({
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .activities {
   &__filter {
     text-align: center;

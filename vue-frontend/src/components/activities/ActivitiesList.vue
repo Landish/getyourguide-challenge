@@ -21,7 +21,7 @@ export default defineComponent({
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .activities {
   &__container {
     display: grid;
