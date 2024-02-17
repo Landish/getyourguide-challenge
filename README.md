@@ -37,8 +37,8 @@ npm install && npm run test
 ## Assumptions & Technical Decisions
 
 In real-world scenario filtering, sorting and similar operations should be done on the Database/Server Layer. 
-
 Filtering logic is implemented on backend in `nest-backend/src/activities/activities.service.ts` file. 
+
 Ideally this service should communicate with Database and query results with their relationships.
 But in our case we are simply using hardcoded list of activities from `activities.json` file.
 
