@@ -67,4 +67,5 @@ There are several things that can be done to improve these applications. However
 - Server: Add cache layer between API and DB calls. (Redis) 
 - Server: Use paginated results for large list of activities. 
 - Client/Server: Add missing E2E Tests for both applications
+- Client/Server: Use multi-stage docker steps for faster builds
 - ...
