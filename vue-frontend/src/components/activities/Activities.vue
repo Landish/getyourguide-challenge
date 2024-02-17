@@ -19,6 +19,16 @@ export default defineComponent({
         withSupplier: true,
         title
       })
+    },
+    handleSearch(query: string | Event) {
+      // If the query is an Event, it means that user has pressed Enter.
+      // In this case, we should prevent the default behavior of form.
+      if (query instanceof Event) {
+        query.preventDefault()
+        return
+      }
+
+      this.fetchActivities(query)
     }
   },
   async mounted() {
@@ -29,7 +39,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <ActivitiesFilter @search="(query) => fetchActivities(query)" />
+  <ActivitiesFilter @search="handleSearch" />
   <ActivitiesList :activities="activities" v-if="activities?.length > 0" />
   <ActivitiesEmpty v-else />
 </template>
