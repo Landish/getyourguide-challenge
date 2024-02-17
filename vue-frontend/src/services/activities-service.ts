@@ -1,14 +1,14 @@
 import type { Activity } from '@/types/types'
 
-interface GetActivitiesDto {
+interface FindActivitiesDto {
   title?: string
   withSupplier?: boolean
 }
 
-export async function getActivities({
+export async function findActivities({
   title = '',
   withSupplier = true
-}: GetActivitiesDto): Promise<Activity[]> {
+}: FindActivitiesDto): Promise<Activity[]> {
   const url = new URL('http://localhost:3000/activities')
   if (title) url.searchParams.append('title', title)
   if (withSupplier) url.searchParams.append('withSupplier', withSupplier.toString())
