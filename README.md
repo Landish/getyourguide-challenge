@@ -38,7 +38,6 @@ npm install && npm run test
 
 In approaching this challenge, I initially assumed it was a component of the activity services within the microservices architecture. 
 However, as I wasn't familiar with Java Spring Boot, I decided to use NestJS for the backend aspect of this challenge. 
-NestJS is recognized for its scalable and modular architecture, making it advantageous for both small and enterprise applications.
 
 In real-world 3-tier applications filtering, sorting and similar operations should be done on the Database/Server Layer. 
 Filtering logic is implemented on backend in `nest-backend/src/activities/activities.service.ts` file. 
