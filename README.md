@@ -68,3 +68,4 @@ There are several things that can be done to improve the performance and quality
 - Client/Server: Add missing E2E Tests for both applications.
 - Client/Server: Use multi-stage docker steps for faster builds.
 - Client/Server: Add docs, such as Swagger and Storybook.
+- ...
